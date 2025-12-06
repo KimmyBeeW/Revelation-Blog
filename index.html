@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Young Christian Blog | Revelation from a Latter-Day Saint's Perspective</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky-light: #e8f4fc;
+            --sky-blue: #a8d4f0;
+            --sky-medium: #7bc0e8;
+            --blush-pink: #f5c6d6;
+            --rose-pink: #e8a0b8;
+            --warm-brown: #8b6b5c;
+            --cocoa: #6b4c3e;
+            --cream: #fefcf9;
+            --soft-white: #ffffff;
+            --text-dark: #3d3d3d;
+            --text-medium: #5a5a5a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(180deg, var(--sky-light) 0%, var(--cream) 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Decorative floating shapes */
+        .decorations {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--blush-pink);
+            top: -100px;
+            right: -50px;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--sky-blue);
+            top: 400px;
+            left: -80px;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: var(--rose-pink);
+            bottom: 200px;
+            right: 10%;
+        }
+
+        .shape-4 {
+            width: 100px;
+            height: 100px;
+            background: var(--warm-brown);
+            top: 60%;
+            left: 5%;
+            opacity: 0.1;
+        }
+
+        /* Header */
+        header {
+            position: relative;
+            z-index: 10;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--soft-white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(168, 212, 240, 0.3);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--sky-medium) 0%, var(--blush-pink) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--cocoa);
+        }
+
+        /* Main content */
+        main {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 4rem;
+        }
+
+        /* Article card */
+        .article-card {
+            background: var(--soft-white);
+            border-radius: 32px;
+            padding: 3rem 2.5rem;
+            box-shadow: 
+                0 4px 6px rgba(139, 107, 92, 0.05),
+                0 20px 50px rgba(168, 212, 240, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Article header */
+        .article-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px dashed var(--sky-blue);
+        }
+
+        .article-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--blush-pink) 0%, var(--rose-pink) 100%);
+            color: var(--soft-white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 700;
+            color: var(--cocoa);
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .article-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sky-medium) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--soft-white);
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--warm-brown);
+        }
+
+        .section-body {
+            background: linear-gradient(135deg, var(--sky-light) 0%, rgba(245, 198, 214, 0.15) 100%);
+            border-radius: 20px;
+            padding: 1.75rem;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            border-left: 4px solid var(--blush-pink);
+        }
+
+        .section-body p {
+            margin-bottom: 0;
+        }
+
+        /* Scripture links */
+        .scripture-link {
+            color: var(--cocoa);
+            font-weight: 600;
+            text-decoration: underline;
+            text-decoration-color: var(--blush-pink);
+            text-underline-offset: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .scripture-link:hover {
+            color: var(--warm-brown);
+            text-decoration-color: var(--rose-pink);
+        }
+
+        /* Placeholder text */
+        .placeholder {
+            color: var(--text-medium);
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            color: var(--warm-brown);
+            font-size: 0.9rem;
+        }
+
+        .footer-hearts {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .article-card {
+                padding: 2rem 1.5rem;
+                border-radius: 24px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .section-number {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+                font-size: 1.1rem;
+            }
+
+            .section-body {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative background shapes -->
+    <div class="decorations">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-icon">✨</div>
+            <span class="logo-text">Young Christian Blog</span>
+        </div>
+    </header>
+
+    <main>
+        <article class="article-card">
+            <header class="article-header">
+                <span class="article-tag">Faith & Doctrine</span>
+                <h1 class="article-title">Revelation from a Latter-Day Saint's Perspective</h1>
+                <p class="article-subtitle">Why do we, members of The Church of Jesus Christ of Latter-Day Saints, believe in continuing revelation, the idea that God still speaks today?</p>
+            </header>
+
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <h2 class="section-title">What is revelation?</h2>
+                </div>
+                <div class="section-body">
+                    <p>Revelation, how God speaks to us, is probably both the simplest and yet most complex topic we, as God's children, have to grapple with. The Holy Spirit is essentially the mascot of revelation, and he gives it to us in many different ways: <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/15?lang=eng&id=p26#p26" target="_blank" rel="noopener" class="scripture-link">John 15:26</a> tells us he is the Comforter, the spirit of truth, comes from the Father, and testifies of Christ; <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/1-kgs/19?lang=eng&id=p12#p12" target="_blank" rel="noopener" class="scripture-link">1 Kings 19:12</a> tells us the Lord isn't in the fire, but afterwards "a still small voice"; <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/16?lang=eng&id=p13#p13" target="_blank" rel="noopener" class="scripture-link">John 16:13</a> tells us the Spirit will "guide you into all truth" and "show you things to come"; <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/gal/5?lang=eng&id=p22-p23#p22" target="_blank" rel="noopener" class="scripture-link">Galatians 5:22-23</a> describes the fruits of the spirit, "love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance"; and finally <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/isa/28?lang=eng&id=p9-p10,p13#p9" target="_blank" rel="noopener" class="scripture-link">Isaiah 28:9-10,13</a> teaches us that the Lord gives us knowledge "line upon line", "precept upon precept", "hear a little, and there a little". Those quiet snippets of truth, inspiration, and comfort are essential for staying connected to God in this crazy, busy world.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <h2 class="section-title">Why is revelation important today?</h2>
+                </div>
+                <div class="section-body">
+                    <p class="placeholder">Body text</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <h2 class="section-title">How do members of the Church of Jesus Christ of Latter-Day Saints believe revelation can be received?</h2>
+                </div>
+                <div class="section-body">
+                    <p class="placeholder">Body text</p>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-hearts">💗</div>
+        <p>Made with faith & love</p>
+    </footer>
+</body>
+</html>
+
